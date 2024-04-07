@@ -1,39 +1,55 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using YungChing_WebAPI.Models;
+using YungChing_WebAPI.Service;
 
 namespace YungChing_WebAPI.Controllers
 {
     public class UserController : ApiController
     {
         // GET api/<controller>
-        public IEnumerable<string> Get()
+        public DataTable Get()
         {
-            return new string[] { "value1", "value2" };
+            DataTable dt = UserService.GetUser();
+
+            return dt;
         }
 
         // GET api/<controller>/5
-        public string Get(int id)
+        public DataTable Get(string userid)
         {
-            return "value";
+            DataTable dt = UserService.GetUser(userid);
+
+            return dt;
         }
 
         // POST api/<controller>
-        public void Post([FromBody] string value)
+        public bool Post([FromBody] User user)
         {
+            bool IsAdd = UserService.AddUser(user.UserID, user.UserName);
+
+            return IsAdd;
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody] string value)
+        public bool Put(string userid, [FromBody] User user)
         {
+            bool IsUpd = UserService.UpdUser(userid, user.UserName);
+
+            return IsUpd;
         }
 
         // DELETE api/<controller>/5
-        public void Delete(int id)
+        public bool Delete(string userid)
         {
+            bool IsDel = UserService.DelUser(userid);
+
+            return IsDel;
         }
     }
 }
