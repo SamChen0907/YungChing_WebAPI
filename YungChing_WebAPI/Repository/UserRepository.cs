@@ -10,7 +10,7 @@ namespace YungChing_WebAPI.Repository
 {
     public class UserRepository
     {
-        public static DataTable GetUser(string userid = null)
+        public DataTable GetUser(string userid = null)
         {
             DataTable dt = new DataTable();
 
@@ -28,7 +28,7 @@ namespace YungChing_WebAPI.Repository
 
             return dt;
         }
-        public static int AddUser(string userid, string username)
+        public int AddUser(string userid, string username)
         {
             int EffectCount = 0;
 
@@ -42,7 +42,7 @@ namespace YungChing_WebAPI.Repository
 
             return EffectCount;
         }
-        public static int UpdUser(string userid, string username)
+        public int UpdUser(string userid, string username)
         {
             int EffectCount = 0;
 
@@ -56,7 +56,7 @@ namespace YungChing_WebAPI.Repository
 
             return EffectCount;
         }
-        public static int DelUser(string userid)
+        public int DelUser(string userid)
         {
             int EffectCount = 0;
 

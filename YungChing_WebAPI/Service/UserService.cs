@@ -7,29 +7,29 @@ using YungChing_WebAPI.Repository;
 
 namespace YungChing_WebAPI.Service
 {
-    public class UserService
-    {
+    public class UserService 
+    {       
         //查詢
-        public static DataTable GetUser() //查詢所有User資料
+        public DataTable GetUser() //查詢所有User資料
         {
-            DataTable dt = UserRepository.GetUser();
+            UserRepository userRepository = new UserRepository();
 
-            return dt;
+            return userRepository.GetUser() ;
         }
-        public static DataTable GetUser(string userid) //依UserID查詢資料
+        public DataTable GetUser(string userid) //依UserID查詢資料
         {
-            DataTable dt = UserRepository.GetUser(userid);
+            UserRepository userRepository = new UserRepository();
 
-
-            return dt;
+            return userRepository.GetUser(userid);
         }
 
         //新增
-        public static bool AddUser(string userid, string username)
+        public bool AddUser(string userid, string username)
         {
             bool IsAdd = true; // 是否新增
 
-            int EffectCount = UserRepository.AddUser(userid, username);
+            UserRepository userRepository = new UserRepository();
+            int EffectCount = userRepository.AddUser(userid, username);
 
             if (EffectCount > 0)
                 IsAdd = true;
@@ -39,11 +39,12 @@ namespace YungChing_WebAPI.Service
             return IsAdd;
         }
         //刪除
-        public static bool DelUser(string userid)
+        public bool DelUser(string userid)
         {
             bool IsDel = true; //是否刪除
 
-            int EffectCount = UserRepository.DelUser(userid);
+            UserRepository userRepository = new UserRepository();
+            int EffectCount = userRepository.DelUser(userid);
 
             if (EffectCount > 0)
                 IsDel = true;
@@ -54,11 +55,12 @@ namespace YungChing_WebAPI.Service
             return IsDel;
         }
         //修改
-        public static bool UpdUser(string userid, string username)
+        public bool UpdUser(string userid, string username)
         {
             bool IsUpd; //是否修改
 
-            int EffectCount = UserRepository.UpdUser(userid, username);
+            UserRepository userRepository = new UserRepository();
+            int EffectCount = userRepository.UpdUser(userid, username);
 
             if (EffectCount > 0)
                 IsUpd = true;

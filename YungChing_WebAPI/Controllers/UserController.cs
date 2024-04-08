@@ -15,41 +15,41 @@ namespace YungChing_WebAPI.Controllers
         // GET api/<controller>
         public DataTable Get()
         {
-            DataTable dt = UserService.GetUser();
+            UserService userService = new UserService();
 
-            return dt;
+            return userService.GetUser(); ;
         }
 
         // GET api/<controller>/5
         public DataTable Get(string userid)
         {
-            DataTable dt = UserService.GetUser(userid);
+            UserService userService = new UserService();
 
-            return dt;
+            return userService.GetUser(userid);
         }
 
         // POST api/<controller>
         public bool Post([FromBody] User user)
         {
-            bool IsAdd = UserService.AddUser(user.UserID, user.UserName);
+            UserService userService = new UserService();
 
-            return IsAdd;
+            return userService.AddUser(user.UserID,user.UserName);
         }
 
         // PUT api/<controller>/5
         public bool Put(string userid, [FromBody] User user)
         {
-            bool IsUpd = UserService.UpdUser(userid, user.UserName);
+            UserService userService = new UserService();
 
-            return IsUpd;
+            return userService.UpdUser(userid,user.UserName);
         }
 
         // DELETE api/<controller>/5
         public bool Delete(string userid)
         {
-            bool IsDel = UserService.DelUser(userid);
+            UserService userService = new UserService();
 
-            return IsDel;
+            return userService.DelUser(userid);
         }
     }
 }
